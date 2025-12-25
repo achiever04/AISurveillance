@@ -426,3 +426,130 @@ ai-surveillance-platform/
     ├── embeddings/                 # Face embeddings cache
     └── temp/                       # Temporary processing
 ```
+
+## 5. RESOURCE ALLOCATION (8GB RAM)
+
+```
+PostgreSQL:     1.0 GB
+Redis:          0.5 GB
+IPFS:           0.5 GB
+Fabric Network: 2.0 GB (minimal setup)
+Backend:        1.5 GB
+AI Engine:      2.0 GB (models + processing)
+Frontend:       0.3 GB
+System Reserve: 0.2 GB
+─────────────────────
+Total:          8.0 GB
+
+
+**Optimization Strategies:**
+- Use Docker memory limits
+- Lazy load AI models (load only when needed)
+- Process frames at 10 FPS (skip 90% of frames)
+- Use ONNX Runtime for CPU inference
+- Keep only 2 Fabric peers (1 per org)
+- Single orderer (Solo consensus)
+
+---
+
+## 6. DEPLOYMENT SEQUENCE
+
+**Phase 1: Infrastructure (Day 1-2)**
+1. Install Docker Desktop for Windows
+2. Install Python 3.10
+3. Install Node.js 18 LTS
+4. Setup PostgreSQL, Redis, IPFS containers
+
+**Phase 2: Blockchain (Day 3-4)**
+5. Setup Hyperledger Fabric network
+6. Deploy smart contracts
+7. Test chaincode invocation
+
+**Phase 3: Backend (Day 5-7)**
+8. Initialize FastAPI application
+9. Setup database models & migrations
+10. Implement core services
+
+**Phase 4: AI Engine (Day 8-10)**
+11. Download pretrained models
+12. Implement detection pipelines
+13. Test on sample videos
+
+**Phase 5: Integration (Day 11-13)**
+14. Connect cameras
+15. Implement blockchain integration
+16. Setup federated learning nodes
+
+**Phase 6: Frontend (Day 14-16)**
+17. Build React dashboard
+18. Implement WebSocket real-time updates
+19. Create blockchain explorer
+
+**Phase 7: Testing & Optimization (Day 17-20)**
+20. Performance benchmarking
+21. End-to-end testing
+22. Documentation
+
+
+## 8. DEPLOYMENT CHECKLIST
+
+### Pre-Deployment
+- [ ] Install Docker Desktop for Windows
+- [ ] Install Python 3.10+
+- [ ] Install Node.js 18 LTS
+- [ ] Clone repository
+- [ ] Run `scripts/setup_environment.bat`
+
+### Initial Setup
+- [ ] Copy `.env.example` to `.env`
+- [ ] Update SECRET_KEY in `.env`
+- [ ] Update database passwords
+- [ ] Create required directories
+
+### Infrastructure
+- [ ] Start Docker Desktop
+- [ ] Run `docker-compose up -d`
+- [ ] Verify all containers are running: `docker ps`
+- [ ] Check container logs: `docker-compose logs`
+
+### Blockchain
+- [ ] Generate crypto materials
+- [ ] Create channel
+- [ ] Deploy chaincodes
+- [ ] Test chaincode invocation
+
+### Database
+- [ ] Run `python scripts/init_database.py`
+- [ ] Create admin user: `python scripts/create_admin_user.py`
+- [ ] Verify tables created
+
+### Backend
+- [ ] Activate venv: `venv\Scripts\activate`
+- [ ] Start FastAPI: `python -m app.main`
+- [ ] Test API: http://localhost:8000/api/v1/docs
+- [ ] Verify WebSocket connection
+
+### Frontend
+- [ ] Install dependencies: `cd frontend && npm install`
+- [ ] Start dev server: `npm run dev`
+- [ ] Access UI: http://localhost:5173
+- [ ] Test login with admin credentials
+
+### Camera Integration
+- [ ] Connect USB webcam
+- [ ] Configure camera in database
+- [ ] Test live feed
+- [ ] Verify frame processing
+
+### AI Models
+- [ ] Download pretrained models
+- [ ] Test face detection
+- [ ] Test face recognition
+- [ ] Verify emotion detection
+
+### End-to-End Testing
+- [ ] Enroll test person in watchlist
+- [ ] Trigger detection event
+- [ ] Verify blockchain anchoring
+- [ ] Check evidence storage
+- [ ] Test audit trail
