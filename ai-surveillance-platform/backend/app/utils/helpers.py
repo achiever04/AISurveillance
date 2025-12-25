@@ -1,4 +1,4 @@
-lpe"""
+"""
 Helper utility functions
 """
 from datetime import datetime, timedelta
