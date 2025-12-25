@@ -3,6 +3,7 @@ Blockchain query endpoints
 """
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
+from datetime import datetime  # ← ADD THIS LINE
 
 from app.db.session import get_db
 from app.models.user import User
@@ -38,5 +39,5 @@ async def verify_evidence_blockchain(
     return {
         "event_id": event_id,
         "is_valid": is_valid,
-        "verified_at": datetime.utcnow().isoformat()
+        "verified_at": datetime.utcnow().isoformat()  # ← NOW WORKS
     }

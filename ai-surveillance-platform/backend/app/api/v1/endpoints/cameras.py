@@ -9,6 +9,7 @@ from datetime import datetime
 
 from app.db.session import get_db
 from app.models.camera import Camera
+from app.models.detection import Detection  # ← ADD THIS LINE
 from app.models.user import User
 from app.schemas.camera import CameraCreate, CameraUpdate, CameraResponse, CameraStats
 from app.api.deps import get_current_user, require_role
