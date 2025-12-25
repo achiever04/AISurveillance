@@ -25,6 +25,7 @@ class Settings(BaseSettings):
     # Redis
     REDIS_HOST: str = "localhost"
     REDIS_PORT: int = 6379
+    REDIS_PASSWORD: str = ""
     
     # IPFS
     IPFS_API: str = "http://localhost:5001"
@@ -35,6 +36,8 @@ class Settings(BaseSettings):
     FABRIC_ORG1_MSP: str = "Org1MSP"
     FABRIC_ORG2_MSP: str = "Org2MSP"
     CHANNEL_NAME: str = "surveillance-channel"
+    EVIDENCE_CHAINCODE: str = "evidence-contract"
+    WATCHLIST_CHAINCODE: str = "watchlist-contract"
     
     # AI Models
     FACE_DETECTION_MODEL: str = "mtcnn"
